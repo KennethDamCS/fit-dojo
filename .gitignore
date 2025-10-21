@@ -1,0 +1,112 @@
+# =========================
+# macOS
+# =========================
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# =========================
+# Editor / IDE
+# =========================
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.code-workspace
+
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+.mypy_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+.env
+.venv
+venv/
+pip-wheel-metadata/
+*.log
+
+# =========================
+# FastAPI / Environment
+# =========================
+.env.local
+.env.production
+.env.development
+.env.test
+.env.*
+!.env.example  # keep example env file for setup
+
+# =========================
+# Node / React (frontend)
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-lock.yaml
+package-lock.json
+dist/
+build/
+.cache/
+.storybook-out/
+
+# =========================
+# PWA artifacts
+# =========================
+workbox-*.js
+sw.js
+service-worker.js.map
+
+# =========================
+# Logs & misc
+# =========================
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# =========================
+# Coverage
+# =========================
+coverage/
+.nyc_output/
+
+# =========================
+# Docker
+# =========================
+docker-data/
+*.tar
+# Named volumes handled by Docker; keep data outside repo
+docker-compose.override.yml
+
+# =========================
+# Database
+# =========================
+pgdata/
+postgres-data/
+
+# =========================
+# OS Thumbs / Cache
+# =========================
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# =========================
+# Temporary files
+# =========================
+*.tmp
+*.temp
+*.swp
+*.swo
