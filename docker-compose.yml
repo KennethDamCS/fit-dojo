@@ -14,5 +14,13 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: fitdojo-mailpit
+    restart: unless-stopped
+    ports:
+      - "8025:8025"  # UI
+      - "1025:1025"  # SMTP
+
 volumes:
   pgdata:

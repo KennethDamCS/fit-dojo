@@ -8,5 +8,9 @@ class Settings(BaseModel):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
     REFRESH_TOKEN_EXPIRE_MINUTES: int = int(os.getenv("REFRESH_TOKEN_EXPIRE_MINUTES", "43200"))
     JWT_ALGORITHM: str = "HS256"
+    VERIFY_TOKEN_EXPIRE_MINUTES: int = int(os.getenv("VERIFY_TOKEN_EXPIRE_MINUTES", "30"))
+    RESET_TOKEN_EXPIRE_MINUTES: int = int(os.getenv("RESET_TOKEN_EXPIRE_MINUTES", "30"))
+    APP_BASE_URL: str = os.getenv("APP_BASE_URL", "http://localhost:8000")
+
 
 settings = Settings()
