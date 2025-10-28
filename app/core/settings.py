@@ -11,6 +11,12 @@ class Settings(BaseModel):
     VERIFY_TOKEN_EXPIRE_MINUTES: int = int(os.getenv("VERIFY_TOKEN_EXPIRE_MINUTES", "30"))
     RESET_TOKEN_EXPIRE_MINUTES: int = int(os.getenv("RESET_TOKEN_EXPIRE_MINUTES", "30"))
     APP_BASE_URL: str = os.getenv("APP_BASE_URL", "http://localhost:8000")
-
+    FRONTEND_BASE_URL: str = os.getenv("FRONTEND_BASE_URL", "http://localhost:5173")
+    COOKIE_DOMAIN: str = os.getenv("COOKIE_DOMAIN", "localhost")
+    COOKIE_SECURE: bool = os.getenv("COOKIE_SECURE", "false").lower() == "true"
+    COOKIE_SAMESITE: str = os.getenv("COOKIE_SAMESITE", "Lax")
+    ACCESS_TOKEN_COOKIE: str = os.getenv("ACCESS_TOKEN_COOKIE", "fd_at")
+    REFRESH_TOKEN_COOKIE: str = os.getenv("REFRESH_TOKEN_COOKIE", "fd_rt")
+    CSRF_COOKIE: str = os.getenv("CSRF_COOKIE", "fd_csrf")
 
 settings = Settings()
