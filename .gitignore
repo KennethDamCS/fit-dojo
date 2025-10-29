@@ -35,6 +35,11 @@ htmlcov/
 venv/
 pip-wheel-metadata/
 *.log
+.poetry/
+__pypackages__/
+.pyre/
+.dmypy.json
+pyrightconfig.json
 
 # =========================
 # FastAPI / Environment
@@ -59,6 +64,13 @@ dist/
 build/
 .cache/
 .storybook-out/
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.env.production
+frontend/.env.development
+frontend/components.json
 
 # =========================
 # PWA artifacts
@@ -110,3 +122,27 @@ $RECYCLE.BIN/
 *.temp
 *.swp
 *.swo
+
+# =========================
+# Misc local config
+# =========================
+*.local
+*.bak
+*.orig
+*.tmp
+*.old
+
+# =========================
+# JetBrains extra files
+# =========================
+.idea/httpRequests/
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/dataSources/
+.idea/**/shelf/
+
+# =========================
+# VSCode / Prettier caches
+# =========================
+frontend/.eslintcache
+frontend/.prettiercache
