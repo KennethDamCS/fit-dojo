@@ -27,7 +27,7 @@ export default function Login() {
   });
 
   async function onSubmit(data: LoginForm) {  
-    console.log("onSubmit called with:", data);
+    // console.log("onSubmit called with:", data); was used for testing
     await login(data.email, data.password);
     navigate("/"); // redirect to dashboard
   }
