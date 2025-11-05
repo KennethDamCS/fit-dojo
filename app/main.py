@@ -14,7 +14,7 @@ app = FastAPI(title="FitDojo API")
 # CORS for the frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.FRONTEND_BASE_URL],
+    allow_origins=["http://localhost:5173"],  # 👈 hard-code for now
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allow_headers=["*"],

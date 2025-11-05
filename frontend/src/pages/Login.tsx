@@ -1,21 +1,77 @@
-import { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from "../components/ui/input";
+import { Button } from "../components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
+import { useNavigate } from "react-router-dom";
+
+
+const schema = z.object({
+  email: z.string().email("Enter a valid email"),
+  password: z.string().min(6, "Minimum 6 characters"),
+});
+
+type LoginForm = z.infer<typeof schema>;
 
 export default function Login() {
   const { login } = useAuth();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<LoginForm>({
+    resolver: zodResolver(schema),
+  });
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    await login(email, password);
+  async function onSubmit(data: LoginForm) {  
+    console.log("onSubmit called with:", data);
+    await login(data.email, data.password);
+    navigate("/"); // redirect to dashboard
   }
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-sm mx-auto p-6 space-y-4">
-      <input className="w-full p-2 border" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input className="w-full p-2 border" placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button className="bg-primary text-white px-4 py-2 rounded">Login</button>
-    </form>
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      <Card className="w-[360px]">
+        <CardHeader>
+          <CardTitle className="text-center text-xl font-semibold">
+            FitDojo Login
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <div>
+              <Input placeholder="Email" {...register("email")} />
+              {errors.email && (
+                <p className="text-sm text-red-500 mt-1">
+                  {errors.email.message}
+                </p>
+              )}
+            </div>
+            <div>
+              <Input
+                placeholder="Password"
+                type="password"
+                {...register("password")}
+              />
+              {errors.password && (
+                <p className="text-sm text-red-500 mt-1">
+                  {errors.password.message}
+                </p>
+              )}
+            </div>
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full"
+            >
+              {isSubmitting ? "Logging in..." : "Login"}
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
   );
 }
