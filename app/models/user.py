@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, Float, DateTime, Boolean
+from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from app.core.database import Base
 
@@ -22,3 +23,9 @@ class User(Base):
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
     is_verified = Column(Boolean, nullable=False, server_default="false")
     password_changed_at = Column(DateTime(timezone=True), nullable=True)
+
+    sessions = relationship(
+        "Session",
+        back_populates="user",
+        cascade="all, delete-orphan",
+    )
